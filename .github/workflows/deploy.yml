@@ -4,17 +4,9 @@ on: push
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        node: [18, 20]
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Print variable
-        run: echo "${{ secrets.TOKEN_SECRECT }}"
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -31,3 +23,10 @@ jobs:
       
       - name: Build page
         run: npm run build
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
+          app_location: "public"
+          deployment_action: "upload"
