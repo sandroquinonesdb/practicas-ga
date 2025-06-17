@@ -23,12 +23,3 @@ jobs:
       
       - name: Build page
         run: npm run build
-
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
-
-      - name: TEST
-        run: |
-          ssh -o StrictHostKeyChecking=no azureuser@20.121.69.188 touch hola.txt
