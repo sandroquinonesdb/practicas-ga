@@ -24,9 +24,11 @@ jobs:
       - name: Build page
         run: npm run build
 
-      - name: Deploy to Azure Static Web Apps
-        uses: Azure/static-web-apps-deploy@v1
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
-          app_location: "public"
-          deployment_action: "upload"
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: TEST
+        run: |
+          ssh -o StrictHostKeyChecking=no azureuser@20.121.69.188 touch hola.txt
