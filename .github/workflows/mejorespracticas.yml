@@ -1,4 +1,4 @@
-name: Deploy
+name: mejores-practicas
 
 on: workflow_dispatch
 
