@@ -1,0 +1,1 @@
+[![mejores-practicas](https://github.com/sandroquinonesdb/practicas-ga/actions/workflows/mejorespracticas.yml/badge.svg?event=status)](https://github.com/sandroquinonesdb/practicas-ga/actions/workflows/mejorespracticas.yml)
